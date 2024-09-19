@@ -359,7 +359,7 @@ export default class EventBindDialog extends Component<PluginProps> {
             <div className="dialog-small-title">
               扩展参数设置{' '}
               <HelpTip>
-                扩展参数做为单独的一个json格式入参追加在原有透传参数之后 如:onClick
+                扩展参数做为单独的一个json 或 js表达式 入参追加在原有透传参数之后 如:onClick
                 (event,extParams)
               </HelpTip>
               <Switch
@@ -376,7 +376,7 @@ export default class EventBindDialog extends Component<PluginProps> {
               <MonacoEditor
                 value={paramStr}
                 {...defaultEditorOption}
-                {...{ language: 'json' }}
+                {...{ language: 'javascript' }}
                 onChange={(newCode: string) => this.onChangeEditor(newCode)}
               />
               {!useParams && <div className="mask" />}

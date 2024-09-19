@@ -14,6 +14,7 @@ export default [
       { name: 'onScroll' },
       { name: 'onLoad' },
       { name: 'onError' },
+      { name: 'onLoad' },
       { name: 'onCopy' },
       { name: 'onPaste' },
       { name: 'onCut' },

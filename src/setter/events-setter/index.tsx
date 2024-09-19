@@ -4,7 +4,6 @@ import { event, skeleton } from '@alilc/lowcode-engine';
 import nativeEvents from './native-events';
 import { cloneDeep } from 'lodash';
 import './index.less';
-import { create } from 'src/services/api';
 
 const { Item, Group } = Menu;
 const RadioGroup = Radio.Group;
@@ -20,7 +19,7 @@ const SETTER_NAME = 'event-setter';
 export default class EventsSetter extends Component<{
   value: any;
   definition: any;
-  onChange: (eventData:{eventDataList:any[], eventList:any[]}) => void;
+  onChange: (eventData: { eventDataList: any[]; eventList: any[] }) => void;
 }> {
   state = {
     eventBtns: [],
@@ -204,13 +203,12 @@ export default class EventsSetter extends Component<{
 
   deleteEvent = (eventName: string) => {
     let { eventDataList } = this.state;
-    const eventList:any[] = [];
-    eventDataList = eventDataList.filter((item, index) => {
+    const eventList: any[] = [];
+    eventDataList = eventDataList.filter((item: any, index: number) => {
       if (item.name === eventName) {
         eventList.push(item);
         return false;
       }
-
       return true;
     });
 
