@@ -6,7 +6,7 @@ import { PluginProps } from '@alilc/lowcode-types';
 import MonacoEditor from '@alilc/lowcode-plugin-base-monaco-editor';
 import './index.less';
 
-const defaultParams = '{\n \t "testKey":123 \n}';
+const defaultParams = '{\n \t testKey: 123 \n}';
 // 模板变量占位
 const tempPlaceHolder = '${extParams}';
 const tempPlaceHolderReg = /\$\{extParams\}/g;

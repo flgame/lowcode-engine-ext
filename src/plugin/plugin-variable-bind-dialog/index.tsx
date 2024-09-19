@@ -160,10 +160,8 @@ export default class VariableBindDialog extends Component<PluginProps> {
           value = eval(`(${valueString})`);
         } catch (e) {}
 
-        // 属性为false 或者 为"" 也显示到dialog中
-        if (value || value === false || value === '') {
-          dataSourceMap[key] = value;
-        }
+        // 所有值都显示到dialog中
+        dataSourceMap[key] = value;
       }
     }
     const treeList = [];
@@ -488,9 +486,11 @@ export default class VariableBindDialog extends Component<PluginProps> {
 
   onSelectTreeNode = (selectedKeys, extra) => {
     const { selParentVariable, childrenVariableList } = this.state;
+    const node = extra.selectedNodes[0];
+    if (!node) return;
 
-    const label = extra.selectedNodes[0]?.props?.label;
-    const key = extra.selectedNodes[0]?.key;
+    const label = node.props?.label;
+    const key = node.key;
     let selectLabel;
     if (selParentVariable == 'stateVaroableList') {
       const pathList = this.treeFindPath(childrenVariableList, (data) => data.key == key, 'label');
