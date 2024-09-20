@@ -4,6 +4,7 @@ import { event, project, skeleton } from '@alilc/lowcode-engine';
 import { Dialog, Search, Input, Balloon, Icon, Switch, Message } from '@alifd/next';
 import { PluginProps } from '@alilc/lowcode-types';
 import MonacoEditor from '@alilc/lowcode-plugin-base-monaco-editor';
+import { js_beautify } from 'js-beautify';
 import './index.less';
 
 const defaultParams = '{\n \t testKey: 123 \n}';
@@ -240,6 +241,8 @@ export default class EventBindDialog extends Component<PluginProps> {
           })${
           formatTemp.substr(rightIndex + 1, formatTemp.length)}`;
       }
+      formatTemp = js_beautify(`{${formatTemp}}`, {indent_size: 2});
+      formatTemp = formatTemp.substring(1, formatTemp.length - 1);
     }
 
     return formatTemp;
